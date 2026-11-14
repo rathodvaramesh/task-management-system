@@ -1,0 +1,11 @@
+import { Component, signal } from '@angular/core';
+
+@Component({
+  selector: 'app-default',
+  imports: [],
+  templateUrl: './default.html',
+  styleUrl: './default.scss',
+})
+export class Default {
+  protected readonly title = signal('Task Management System');
+}

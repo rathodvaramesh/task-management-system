@@ -1,0 +1,19 @@
+# Angular
+task-management-ui/node_modules/
+task-management-ui/.angular/
+task-management-ui/dist/
+
+# Spring Boot
+task-management-api/target/
+task-management-api/.mvn/wrapper/maven-wrapper.jar
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

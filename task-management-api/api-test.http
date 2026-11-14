@@ -1,0 +1,38 @@
+### Health Check
+GET http://localhost:8080/health
+
+###
+
+### Get All Tasks
+GET http://localhost:8080/api/tasks
+
+###
+
+### Create Task
+POST http://localhost:8080/api/tasks
+Content-Type: application/json
+
+{
+  "title": "Learn To Create CRUD API",
+  "description": "Create first CRUD API",
+  "status": "OPEN",
+  "priority": "MEDIUM"
+}
+
+###
+
+### Update Task
+PUT http://localhost:8080/api/tasks/1
+Content-Type: application/json
+
+{
+  "title":"Learn Spring Boot Advanced",
+  "description":"CRUD Operations",
+  "status":"IN_PROGRESS",
+  "priority":"HIGH"
+}
+
+###
+
+### Delete Task
+DELETE http://localhost:8080/api/tasks/1
