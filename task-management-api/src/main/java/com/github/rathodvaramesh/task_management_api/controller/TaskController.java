@@ -3,6 +3,8 @@ package com.github.rathodvaramesh.task_management_api.controller;
 import com.github.rathodvaramesh.task_management_api.entity.Task;
 import com.github.rathodvaramesh.task_management_api.service.TaskService;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,7 +41,11 @@ public class TaskController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteTask(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteTask(
+            @PathVariable Long id) {
+
         taskService.deleteTask(id);
+
+        return ResponseEntity.noContent().build();
     }
 }

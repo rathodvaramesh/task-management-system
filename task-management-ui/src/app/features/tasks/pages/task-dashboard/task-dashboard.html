@@ -1,0 +1,102 @@
+<div class="container">
+
+    <header class="page-header">
+        <h1>Task Management System</h1>
+        <p>{{ tasks.length }} Tasks Available</p>
+    </header>
+
+    <section class="form-card">
+
+        <h2>Create New Task</h2>
+
+        <div class="form-group">
+            <label>Title</label>
+            <input type="text" [(ngModel)]="task.title" placeholder="Enter task title">
+        </div>
+
+        <div class="form-group">
+            <label>Description</label>
+            <textarea rows="4" [(ngModel)]="task.description" placeholder="Enter task description">
+      </textarea>
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group">
+                <label>Status</label>
+
+                <select [(ngModel)]="task.status" size="1">
+                    <option value="OPEN">OPEN</option>
+                    <option value="IN_PROGRESS">IN PROGRESS</option>
+                    <option value="DONE">DONE</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Priority</label>
+
+                <select [(ngModel)]="task.priority" size="1">
+                    <option value="LOW">LOW</option>
+                    <option value="MEDIUM">MEDIUM</option>
+                    <option value="HIGH">HIGH</option>
+                </select>
+            </div>
+
+        </div>
+
+        <button class="primary-btn" (click)="saveTask()">
+            {{ isEditMode ? 'Update Task' : 'Add Task' }}
+        </button>
+
+    </section>
+
+    <section class="tasks-section">
+
+        <div class="tasks-header">
+            <h2>Tasks</h2>
+            <span class="task-count">{{ tasks.length }}</span>
+        </div>
+
+        <div class="empty-state" *ngIf="tasks.length === 0">
+            No tasks available
+        </div>
+
+        <div class="task-card" *ngFor="let task of tasks">
+
+            <div class="task-content">
+
+                <h3>{{ task.title }}</h3>
+
+                <p>{{ task.description }}</p>
+
+                <div class="badges">
+
+                    <span class="badge status-badge">
+                        {{ task.status }}
+                    </span>
+
+                    <span class="badge priority-badge">
+                        {{ task.priority }}
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="actions">
+
+                <button class="edit-btn" (click)="editTask(task)">
+                    Edit
+                </button>
+
+                <button class="delete-btn" (click)="deleteTask(task.id!)">
+                    Delete
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
