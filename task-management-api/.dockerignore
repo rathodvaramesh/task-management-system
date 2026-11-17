@@ -1,0 +1,6 @@
+.git
+.github
+.mvn
+src
+target/*.original
+README.md
