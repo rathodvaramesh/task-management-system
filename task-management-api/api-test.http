@@ -21,6 +21,18 @@ Content-Type: application/json
 
 ###
 
+###
+POST http://16.179.127.128:8080/api/tasks
+Content-Type: application/json
+
+{
+  "title":"AWS Deployment Finished",
+  "description":"First application deployed on AWS",
+  "status":"TODO",
+  "priority":"LOW"
+}
+###
+
 ### Update Task
 PUT http://localhost:8080/api/tasks/1
 Content-Type: application/json
