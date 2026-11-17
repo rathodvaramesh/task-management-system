@@ -1,7 +1,6 @@
 # Angular
 task-management-ui/node_modules/
 task-management-ui/.angular/
-task-management-ui/dist/
 
 # Spring Boot
 task-management-api/target/
