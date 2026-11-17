@@ -1,29 +1,27 @@
-version: '3.8'
-
 services:
 
   postgres:
     image: postgres:17
-    restart: always
     container_name: postgres-db
+    restart: always
 
     environment:
       POSTGRES_DB: taskdb
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
 
-    ports:
-      - "5432:5432"
-
     volumes:
       - postgres-data:/var/lib/postgresql/data
+
+    networks:
+      - task-network
 
   backend:
     build:
       context: ./task-management-api
-    restart: always
 
     container_name: task-api
+    restart: always
 
     depends_on:
       - postgres
@@ -32,9 +30,31 @@ services:
       - "8080:8080"
 
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/taskdb
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-db:5432/taskdb
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
 
+    networks:
+      - task-network
+
+  frontend:
+    build:
+      context: ./task-management-ui
+
+    container_name: task-ui
+    restart: always
+
+    depends_on:
+      - backend
+
+    ports:
+      - "80:80"
+
+    networks:
+      - task-network
+
 volumes:
   postgres-data:
+
+networks:
+  task-network:
