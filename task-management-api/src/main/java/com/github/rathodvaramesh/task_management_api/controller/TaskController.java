@@ -12,9 +12,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/tasks")
 @RequiredArgsConstructor
-@CrossOrigin(origins = {
-    "http://localhost:4200",
-    "http://16.179.127.128"
+@CrossOrigin(originPatterns = "*", allowedHeaders = "*", methods = {
+        RequestMethod.GET,
+        RequestMethod.POST,
+        RequestMethod.PUT,
+        RequestMethod.DELETE,
+        RequestMethod.OPTIONS
 })
 public class TaskController {
 
