@@ -4,6 +4,7 @@ services:
 
   postgres:
     image: postgres:17
+    restart: always
     container_name: postgres-db
 
     environment:
@@ -20,6 +21,7 @@ services:
   backend:
     build:
       context: ./task-management-api
+    restart: always
 
     container_name: task-api
 
